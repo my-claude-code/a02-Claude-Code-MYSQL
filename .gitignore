@@ -1,0 +1,14 @@
+.env
+.env.generated
+venv/
+__pycache__/
+*.pyc
+*.pyo
+app.db
+flask_session/
+instance/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.DS_Store
