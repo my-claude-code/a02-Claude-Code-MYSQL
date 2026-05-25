@@ -25,10 +25,10 @@ class Config:
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL", "sqlite:///app.db")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-    # Server-side session via Flask-Session (filesystem-backed).
-    # Avoids cookie-size limits caused by storing the MSAL auth_flow dict in the browser.
-    SESSION_TYPE = "filesystem"
-    SESSION_FILE_DIR = "flask_session"
+    # Server-side session via Flask-Session (SQLAlchemy-backed).
+    # Storing sessions in MySQL allows multiple app tier instances to share session state.
+    SESSION_TYPE = "sqlalchemy"
+    SESSION_SQLALCHEMY_TABLE = "sessions"
     SESSION_PERMANENT = False
 
     # Session cookie hardening

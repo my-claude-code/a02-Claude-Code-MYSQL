@@ -13,7 +13,8 @@ def create_app(config_class: type = Config) -> Flask:
 
     # Extensions
     db.init_app(app)
-    Session(app)       # server-side session (filesystem)
+    app.config["SESSION_SQLALCHEMY"] = db  # required for sqlalchemy session backend
+    Session(app)
     CSRFProtect(app)   # CSRF protection for all POST/PUT/DELETE forms
 
     # Blueprints
